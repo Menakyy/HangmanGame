@@ -1,0 +1,21 @@
+Gra (Game):
+
+Zarządza całą grą, tj. rozpoczyna grę, prowadzi rundy, sprawdza czy gracz zgadł hasło, itp.
+Odpowiada za interakcję z użytkownikiem, np. wyświetlanie podpowiedzi, aktualizacja ekranu, pobieranie danych od użytkownika.
+
+Słownik (Dictionary):
+Przechowuje listę dostępnych haseł.
+Może dostarczać funkcje do losowania hasła z listy. - Hasła zapisane w pliku .txt - Losuje randomowo słowo z danej linijki - sprawdza czy hasło nie zostało już użyte
+
+Hasło (Word):
+Reprezentuje hasło, które gracz próbuje zgadnąć.
+Przechowuje informacje o samym haśle oraz jego stanie (jakie litery zostały już odgadnięte, ile liter zostało odgadniętych).
+
+Gracz (Player):
+Przechowuje informacje o graczu, np. jego imię, liczbę punktów, historię gier itp.
+Każda z tych klas może mieć swoje metody i pola, na przykład:
+
+Klasa Gra może mieć metody takie jak rozpocznij_gre(), zakoncz_gre(), zgadnij_litere(), pobierz_haslo(), itp.
+Klasa Słownik może mieć metody takie jak losuj_haslo(), dodaj_haslo(), usuń_haslo(), itp.
+Klasa Hasło może mieć metody takie jak sprawdz_litere(), pokaz_haslo(), czy_haslo_odgadniete(), itp.
+Klasa Gracz może mieć metody takie jak dodaj_punkty(), zmien_imie(), pobierz_liczbe_punktow(), itp.
