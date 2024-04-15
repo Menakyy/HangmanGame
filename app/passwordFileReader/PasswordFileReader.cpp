@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 
-PasswordFileReader::PasswordFileReader(std::string passwordFile) : _passwordFile(passwordFile)
+PasswordFileReader::PasswordFileReader(const std::string& passwordFile) : _passwordFile(passwordFile)
 {
     srand(time(nullptr));
     calculateNumberOfLinesInFile();

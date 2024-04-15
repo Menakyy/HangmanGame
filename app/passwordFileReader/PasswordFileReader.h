@@ -16,7 +16,7 @@ public:
     /**
      * @brief Constructs a PasswordFileReader object.
      */
-    PasswordFileReader(std::string passwordFile = "app/passwordFileReader/passwords.txt");
+    PasswordFileReader(const std::string& passwordFile = "app/passwordFileReader/passwords.txt");
 
     /**
      * @brief Destroys the PasswordFileReader object.
