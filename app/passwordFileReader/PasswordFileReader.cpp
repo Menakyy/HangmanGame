@@ -96,3 +96,9 @@ void PasswordFileReader::getPasswordFromFile(int drawnLine)
         _fileStatus = FileStatus::FILE_ERROR;
     }
 }
+
+bool PasswordFileReader::isMaxPasswords() const
+{
+    size_t size = _passwords.size();
+    return size == _fileLines;
+}

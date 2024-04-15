@@ -75,7 +75,7 @@ public:
      */
     void getPasswordFromFile(int drawnLine);
 
-    bool isMaxPasswords() const { return _passwords.size() == _fileLines; }
+    bool isMaxPasswords() const;
 
 private:
     int              _fileLines    = 0;
