@@ -1,6 +1,6 @@
 #include "Application.h"
 
-Application::Application()
+Application::Application() : _playerCreator(), _passwordFileReader(), _wordManager(_passwordFileReader)
 {
 }
 
@@ -10,9 +10,17 @@ Application::~Application()
 
 void Application::run()
 {
-    // _playerCreator.createPlayers();
-    for (int i = 0; i < 3; i++)
+    _playerCreator.createPlayers();
+    _passwordFileReader.drawPassword();
+    _wordManager.getPasswordFromFile();
+    _wordManager.printPassword();
+
+    while (true)
     {
-        _passwordFileReader.drawPassword();
+        char letter;
+        std::cout << "Enter letter: ";
+        std::cin >> letter;
+
+        _wordManager.guessLetter(letter);
     }
 }

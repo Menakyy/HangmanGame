@@ -4,6 +4,7 @@
 
 #include "app/passwordFileReader/PasswordFileReader.h"
 #include "app/player/PlayerCreator.h"
+#include "app/wordManager/WordManager.h"
 
 class Application
 {
@@ -16,6 +17,7 @@ public:
 private:
     PlayerCreator      _playerCreator;
     PasswordFileReader _passwordFileReader;
+    WordManager        _wordManager;
 };
 
 
