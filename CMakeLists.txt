@@ -23,7 +23,8 @@ add_executable(${PROJECT_NAME}
     "app/Application.cpp"
     "app/player/Player.cpp"
     "app/player/PlayerCreator.cpp"
-    "app/passwordFileReader/PasswordFileReader.cpp")
+    "app/passwordFileReader/PasswordFileReader.cpp"
+    "app/wordManager/WordManager.cpp")
 
 if(BUILD_TESTS)
     add_subdirectory("lib/cpputest")
