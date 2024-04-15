@@ -7,10 +7,16 @@
 class PasswordFileReader
 {
 public:
+    enum FileStatus
+    {
+        NONE,
+        FILE_OK,
+        FILE_ERROR,
+    };
     /**
      * @brief Constructs a PasswordFileReader object.
      */
-    PasswordFileReader();
+    PasswordFileReader(std::string passwordFile = "app/passwordFileReader/passwords.txt");
 
     /**
      * @brief Destroys the PasswordFileReader object.
@@ -35,6 +41,18 @@ public:
     std::vector<int> getPasswords() const { return _passwords; }
 
     /**
+     * @brief Number of lines in the file.
+     * @return Number of lines.
+     */
+    int getFileLines() const { return _fileLines; }
+
+    /**
+     * @brief Returns the file status.
+     * @return The file status.
+     */
+    FileStatus getFileStatus() const { return _fileStatus; }
+
+    /**
      * @brief Calculates the number of lines in the file.
      */
     void calculateNumberOfLinesInFile();
@@ -57,10 +75,14 @@ public:
      */
     void getPasswordFromFile(int drawnLine);
 
+    bool isMaxPasswords() const { return _passwords.size() == _fileLines; }
+
 private:
-    int              _fileLines = 0;
-    std::string      _password  = "";
-    std::vector<int> _passwords = {};  // Int type because line number = password
+    int              _fileLines    = 0;
+    std::string      _passwordFile = "";
+    std::string      _password     = "";
+    std::vector<int> _passwords    = {};  // Int type because line number = password
+    FileStatus       _fileStatus   = FileStatus::NONE;
 };
 
 

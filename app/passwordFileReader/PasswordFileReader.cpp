@@ -6,8 +6,9 @@
 #include <fstream>
 #include <iostream>
 
-PasswordFileReader::PasswordFileReader()
+PasswordFileReader::PasswordFileReader(std::string passwordFile) : _passwordFile(passwordFile)
 {
+    srand(time(nullptr));
     calculateNumberOfLinesInFile();
 }
 
@@ -22,9 +23,10 @@ void PasswordFileReader::drawPassword()
 
 void PasswordFileReader::calculateNumberOfLinesInFile()
 {
-    std::ifstream file("app/passwordFileReader/passwords.txt");
+    std::ifstream file(_passwordFile);
     if (file.is_open())
     {
+        _fileStatus = FileStatus::FILE_OK;
         std::string line;
         while (std::getline(file, line))
         {
@@ -35,6 +37,7 @@ void PasswordFileReader::calculateNumberOfLinesInFile()
     else
     {
         Logger::error("Unable to open file");
+        _fileStatus = FileStatus::FILE_ERROR;
     }
 
     Logger::info("Number of lines in file: %d", _fileLines);
@@ -44,7 +47,6 @@ void PasswordFileReader::randomLineAndGetPassword()
 {
     while (true)
     {
-        srand(time(nullptr));
         int randomLine = (rand() % _fileLines) + 1;
         Logger::info("Random line: %d", randomLine);
         bool passwordStatus = checkForPassword(randomLine);
@@ -69,9 +71,10 @@ bool PasswordFileReader::checkForPassword(int password)
 
 void PasswordFileReader::getPasswordFromFile(int drawnLine)
 {
-    std::ifstream file("app/passwordFileReader/passwords.txt");
+    std::ifstream file(_passwordFile);
     if (file.is_open())
     {
+        _fileStatus = FileStatus::FILE_OK;
         std::string line;
         int         currentLine = 0;
 
@@ -85,13 +88,11 @@ void PasswordFileReader::getPasswordFromFile(int drawnLine)
                 break;
             }
         }
-        {
-            _fileLines++;
-        }
         file.close();
     }
     else
     {
         Logger::error("Unable to open file");
+        _fileStatus = FileStatus::FILE_ERROR;
     }
 }
