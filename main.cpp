@@ -4,13 +4,14 @@
 #include <iostream>
 
 using namespace std;
+
 int main()
 {
     Logger::initialize("log.txt", Logger::LogLevel::info);
     Logger::info("Welcome in Hangman Game!");
 
     Application app;
-    app.run();
+    app.init();
 
     Logger::shutdown();
 
