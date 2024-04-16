@@ -22,7 +22,6 @@ TEST_GROUP(PasswordFileReaderTestsGroup)
     }
 };
 
-
 TEST(PasswordFileReaderTestsGroup, InitTest)
 {
     CHECK_EQUAL("", passwordFileReader->getPassword());
