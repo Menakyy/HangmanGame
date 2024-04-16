@@ -13,8 +13,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 project("MyProject")
 
-set(BUILD_TESTS OFF CACHE BOOL "Build tests")
 option(CLANG_TIDY OFF "Enable clang-tidy checks.")
+option(ENABLE_VALGRIND ON "Enable Valgrind for tests.")
+
+if(VALGRIND_CHECK)
+    add_compile_definitions(CPPUTEST_MEM_LEAK_DETECTION_DISABLED)
+endif()
 
 include_directories("lib/" "./")
 add_executable(${PROJECT_NAME}
@@ -24,9 +28,11 @@ add_executable(${PROJECT_NAME}
     "app/player/Player.cpp"
     "app/player/PlayerCreator.cpp"
     "app/passwordFileReader/PasswordFileReader.cpp"
-    "app/wordManager/WordManager.cpp")
+    "app/wordManager/WordManager.cpp"
+    "app/game/Game.cpp")
 
-if(BUILD_TESTS)
+if(BUILD_TESTING)
+    include(CTest)
     add_subdirectory("lib/cpputest")
     add_subdirectory("tests")
 endif()

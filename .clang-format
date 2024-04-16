@@ -44,4 +44,5 @@ AlwaysBreakAfterReturnType: None
 PenaltyReturnTypeOnItsOwnLine: '1000'
 AllowAllArgumentsOnNextLine: False
 AllowAllParametersOfDeclarationOnNextLine: False
+SeparateDefinitionBlocks: Always
 ...

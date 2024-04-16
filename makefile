@@ -2,7 +2,11 @@ prepare:
 	mkdir buildLinux
 	cmake -S . -B buildLinux/
 
-build:
+prepare_all: 
+	mkdir buildLinux
+	cmake -S . -B buildLinux/ -DBUILD_TESTING=True -DCLANG_TIDY=True -DENABLE_VALGRIND=True
+
+build_app:
 	cd buildLinux/ && make -j
 
 rebuild: 
@@ -15,7 +19,13 @@ clean:
 run:
 	./buildLinux/bin/MyProject
 
-runtest:
+rerun: rebuild run
+
+run_test:
 	./buildLinux/bin/MyProjectTests
 
-all: clean prepare build
+# Build app, tests and run tests
+all: clean prepare_all build_app run_test
+
+# Build app without tests
+build: clean prepare build_app
