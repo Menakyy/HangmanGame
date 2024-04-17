@@ -13,7 +13,6 @@ set(SRC_FILES
 
 add_executable(${PROJECT_NAME}
     "testAppMain.cpp"
-    "appTests/FirstTest.cpp"
     "appTests/PlayerTests.cpp"
     "appTests/PasswordFileReaderTests.cpp"
     "appTests/WordManagerTests.cpp"

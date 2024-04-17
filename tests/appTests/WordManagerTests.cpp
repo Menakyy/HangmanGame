@@ -17,8 +17,8 @@ TEST_GROUP(WordManagerTestsGroup)
 
     void teardown()
     {
-        delete wordManager;
         delete passwordFileReader;
+        delete wordManager;
     }
 };
 
@@ -74,13 +74,19 @@ TEST(WordManagerTestsGroup, GuessLetterTest)
     CHECK_EQUAL(guessedLetters, wordManager->getGuessedLetters());
 
     // Guessing the letter
-    wordManager->guessLetter('p');
+    CHECK_TRUE(wordManager->guessLetter('p'));
     CHECK_EQUAL("p_______", wordManager->getGuessedLetters());
 
-    wordManager->guessLetter('d');
+    CHECK_TRUE(wordManager->guessLetter('d'));
     CHECK_EQUAL("p______d", wordManager->getGuessedLetters());
 
-    wordManager->guessLetter('s');
+    CHECK_TRUE(wordManager->guessLetter('s'));
+    CHECK_EQUAL("p_ss___d", wordManager->getGuessedLetters());
+
+    CHECK_FALSE(wordManager->guessLetter('q'));
+    CHECK_EQUAL("p_ss___d", wordManager->getGuessedLetters());
+
+    CHECK_FALSE(wordManager->guessLetter('x'));
     CHECK_EQUAL("p_ss___d", wordManager->getGuessedLetters());
 
     wordManager->guessWord(password);

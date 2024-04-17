@@ -6,19 +6,17 @@
 
 TEST_GROUP(PlayerTestsGroup)
 {
-    Player* player  = nullptr;
-    Player* player2 = nullptr;
-
+    Player*        player        = nullptr;
+    Player*        player2       = nullptr;
     PlayerCreator* playerCreator = nullptr;
-    void           setup()
+
+    void setup()
     {
         const std::string name  = "Player1";
         const std::string name2 = "Player2";
 
-        player  = new Player(name);
-        player2 = new Player(name2);
-
-
+        player        = new Player(name);
+        player2       = new Player(name2);
         playerCreator = new PlayerCreator();
     }
 
@@ -29,7 +27,6 @@ TEST_GROUP(PlayerTestsGroup)
         delete playerCreator;
     }
 };
-
 
 TEST(PlayerTestsGroup, PlayerTest)
 {
