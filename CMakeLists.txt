@@ -29,7 +29,8 @@ add_executable(${PROJECT_NAME}
     "app/player/PlayerCreator.cpp"
     "app/passwordFileReader/PasswordFileReader.cpp"
     "app/wordManager/WordManager.cpp"
-    "app/game/Game.cpp")
+    "app/game/Game.cpp"
+    "app/wordManager/WordManager.cpp")
 
 if(BUILD_TESTING)
     include(CTest)
