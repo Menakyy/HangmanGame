@@ -1,6 +1,7 @@
 #ifndef APP_GAME_GAME
 #define APP_GAME_GAME
 
+#include "app/HangmanDrawer/HangMan.h"
 #include "app/player/Player.h"
 #include "app/player/PlayerCreator.h"
 #include "app/wordManager/WordManager.h"
@@ -17,12 +18,22 @@ public:
     ~Game();
 
     void playGame();
+
+    void guessLetterByPlayer();
+
+    bool isWordGuessed() const { return _wordManager.isWordGuessed(); }
+
     void setPlayerPoints();
+
+    void printPlayerPoints();
+
+    void newGame();
 
 private:
     PlayerCreator& _playerCreator;
     WordManager&   _wordManager;
-    Player&        _player;
+    Player*        _player;
+    HangmanDrawer  _hangmanDrawer;
 };
 
 

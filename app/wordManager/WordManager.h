@@ -23,7 +23,7 @@ public:
     void getPasswordFromFile();
     void printPassword();
     void printGuessedLetters();
-    void guessLetter(const char letter);
+    bool guessLetter(const char letter);
     void guessWord(const std::string& word);
 
     WordStatus getWordStatus() const { return _wordStatus; }

@@ -10,6 +10,7 @@ WordManager::~WordManager()
 
 void WordManager::getPasswordFromFile()
 {
+    _passwordFileReader.drawPassword();
     _password = _passwordFileReader.getPassword();
     setPassword(_password);
     generateGuessedLetters();
@@ -17,7 +18,7 @@ void WordManager::getPasswordFromFile()
 
 void WordManager::printPassword()
 {
-    std::cout << "Password: " << _guessedLetters << std::endl;
+    std::cout << "Password: " << _password << std::endl;
 }
 
 void WordManager::printGuessedLetters()
@@ -25,16 +26,19 @@ void WordManager::printGuessedLetters()
     std::cout << "Guessed letters: " << _guessedLetters << std::endl;
 }
 
-void WordManager::guessLetter(const char letter)
+bool WordManager::guessLetter(const char letter)
 {
+    bool isLetterInPassword = false;
     for (int i = 0; i < _password.length(); i++)
     {
         if (_password[i] == letter)
         {
             _guessedLetters[i] = letter;
+            isLetterInPassword = true;
         }
     }
-    printGuessedLetters();
+    // printGuessedLetters();
+    return isLetterInPassword;
 }
 
 void WordManager::guessWord(const std::string& word)
@@ -43,11 +47,11 @@ void WordManager::guessWord(const std::string& word)
     {
         _wordStatus     = WordStatus::WORD_CORRECTLY_GUESSED;
         _guessedLetters = _password;
-        printGuessedLetters();
+        // printGuessedLetters();
         return;
     }
     _wordStatus = WordStatus::WORD_INCORRECTLY_GUESSED;
-    printGuessedLetters();
+    // printGuessedLetters();
 }
 
 void WordManager::generateGuessedLetters()

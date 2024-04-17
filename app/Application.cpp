@@ -15,9 +15,7 @@ Application::~Application()
 void Application::init()
 {
     _playerCreator.createPlayers();
-    _passwordFileReader.drawPassword();
     _wordManager.getPasswordFromFile();
-    _wordManager.printPassword();
 
     run();
 }
