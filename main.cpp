@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    Logger::initialize("log.txt", Logger::LogLevel::info);
+    Logger::initialize("log.txt", Logger::LogLevel::none);
     Logger::info("Welcome in Hangman Game!");
 
     Application app;
