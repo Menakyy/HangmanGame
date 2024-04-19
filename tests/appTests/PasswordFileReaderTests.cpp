@@ -36,7 +36,7 @@ TEST(PasswordFileReaderTestsGroup, DrawPasswordTest)
     CHECK_EQUAL(5, passwordFileReader->getFileLines());
     passwordFileReader->randomLineAndGetPassword();
     CHECK_EQUAL(1, passwordFileReader->getPasswords().size());
-    CHECK_FALSE(passwordFileReader->isMaxPasswords());
+    CHECK_TRUE(passwordFileReader->isAnyWordLeft());
 }
 
 TEST(PasswordFileReaderTestsGroup, MultipleDrawPasswordTest)
@@ -49,7 +49,7 @@ TEST(PasswordFileReaderTestsGroup, MultipleDrawPasswordTest)
         CHECK_EQUAL(i + 1, passwordFileReader->getPasswords().size());
     }
     CHECK_EQUAL(passwordFileReader->getFileLines(), passwordFileReader->getPasswords().size());
-    CHECK_TRUE(passwordFileReader->isMaxPasswords());
+    CHECK_FALSE(passwordFileReader->isAnyWordLeft());
 }
 
 TEST(PasswordFileReaderTestsGroup, FunctionTests)

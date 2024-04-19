@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
 project("MyProjectTests")
-include(CTest)
 find_program(VALGRIND "valgrind")
 
 set(SRC_FILES
@@ -9,6 +8,7 @@ set(SRC_FILES
     "../app/passwordFileReader/PasswordFileReader.cpp"
     "../utils/logger/Logger.cpp"
     "../app/wordManager/WordManager.cpp"
+    "../app/hangmanDrawer/HangMan.cpp"
 )
 
 add_executable(${PROJECT_NAME}
@@ -16,6 +16,7 @@ add_executable(${PROJECT_NAME}
     "appTests/PlayerTests.cpp"
     "appTests/PasswordFileReaderTests.cpp"
     "appTests/WordManagerTests.cpp"
+    "appTests/HangManTests.cpp"
     ${SRC_FILES}
 )
 
