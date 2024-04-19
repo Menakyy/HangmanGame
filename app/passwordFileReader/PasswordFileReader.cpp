@@ -97,8 +97,10 @@ void PasswordFileReader::getPasswordFromFile(int drawnLine)
     }
 }
 
-bool PasswordFileReader::isMaxPasswords() const
+bool PasswordFileReader::isAnyWordLeft() const
 {
     size_t size = _passwords.size();
-    return size == _fileLines;
+    Logger::info("Passwords size: %d", size);
+    Logger::info("File lines: %d", _fileLines);
+    return size != _fileLines;
 }

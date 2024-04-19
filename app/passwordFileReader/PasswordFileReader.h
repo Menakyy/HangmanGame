@@ -13,6 +13,7 @@ public:
         FILE_OK,
         FILE_ERROR,
     };
+
     /**
      * @brief Constructs a PasswordFileReader object.
      */
@@ -75,7 +76,7 @@ public:
      */
     void getPasswordFromFile(int drawnLine);
 
-    bool isMaxPasswords() const;
+    bool isAnyWordLeft() const;
 
 private:
     int              _fileLines    = 0;

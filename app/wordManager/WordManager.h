@@ -38,6 +38,8 @@ public:
 
     bool isWordGuessed() const { return _password == _guessedLetters; }
 
+    bool isAvailableWordLeft() const { return _passwordFileReader.isAnyWordLeft(); }
+
 private:
     PasswordFileReader& _passwordFileReader;
     std::string         _password       = "";
