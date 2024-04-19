@@ -16,11 +16,12 @@ project("MyProject")
 option(CLANG_TIDY OFF "Enable clang-tidy checks.")
 option(ENABLE_VALGRIND ON "Enable Valgrind for tests.")
 
-if(VALGRIND_CHECK)
+if(ENABLE_VALGRIND)
     add_compile_definitions(CPPUTEST_MEM_LEAK_DETECTION_DISABLED)
 endif()
 
 include_directories("lib/" "./")
+
 add_executable(${PROJECT_NAME}
     "main.cpp"
     "utils/logger/Logger.cpp"
@@ -30,7 +31,8 @@ add_executable(${PROJECT_NAME}
     "app/passwordFileReader/PasswordFileReader.cpp"
     "app/wordManager/WordManager.cpp"
     "app/game/Game.cpp"
-    "app/wordManager/WordManager.cpp")
+    "app/wordManager/WordManager.cpp"
+    "app/hangmanDrawer/HangMan.cpp")
 
 if(BUILD_TESTING)
     include(CTest)
