@@ -22,7 +22,7 @@ run:
 rerun: rebuild run
 
 run_test:
-	./buildLinux/bin/MyProjectTests
+	./buildLinux/bin/MyProjectTests -v
 
 # Build app, tests and run tests
 all: clean prepare_all build_app run_test
