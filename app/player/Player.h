@@ -9,10 +9,13 @@ public:
     Player(const std::string& name);
     ~Player(){};
 
-    void        setName(const std::string& name) { _name = name; };
+    void setName(const std::string& name) { _name = name; };
+
     std::string getName() const { return _name; }
-    void        setScore(int score) { _score = score; };
-    int         getScore() const { return _score; }
+
+    void setScore(int score) { _score = score; };
+
+    int getScore() const { return _score; }
 
 private:
     std::string _name{ "" };
