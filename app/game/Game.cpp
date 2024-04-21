@@ -29,7 +29,14 @@ void Game::playGame()
 
             if (_hangmanDrawer.isFullyDrawn())
             {
-                exitGame("Hangman is fully drawn!");
+                if (isAvailableWordLeft())
+                {
+                    newGame();
+                }
+                else
+                {
+                    exitGame("No more words left!");
+                }
             }
 
             if (isGuessedLetter)
