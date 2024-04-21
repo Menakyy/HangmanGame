@@ -58,8 +58,26 @@ void PlayerCreator::getPlayerNames(int numPlayers)
     {
         std::cout << "Enter player " << i + 1 << " name: ";
         std::cin >> playerName;
+        if (isPlayerNameTaken(playerName))
+        {
+            std::cout << "Player name already exists. Please enter a different name." << std::endl;
+            i--;
+            continue;
+        }
         addPlayer(playerName);
     }
+}
+
+bool PlayerCreator::isPlayerNameTaken(const std::string& playerName)
+{
+    for (const auto& player : _players)
+    {
+        if (player.getName() == playerName)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void PlayerCreator::addPlayer(const std::string& playerName)

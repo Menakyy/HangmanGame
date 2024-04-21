@@ -47,6 +47,14 @@ public:
      */
     void addPlayer(const std::string& playerName);
 
+    /**
+     * Checks if a player name is already taken.
+     *
+     * @param playerName The name of the player to check.
+     * @return True if the player name is already taken, false otherwise.
+     */
+    bool isPlayerNameTaken(const std::string& playerName);
+
 private:
     /**
      * @brief Print the players' names.
