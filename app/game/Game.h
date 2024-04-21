@@ -47,7 +47,8 @@ private:
     WordManager&   _wordManager;
     Player*        _player;
     HangmanDrawer  _hangmanDrawer;
-    bool           isGuessed = false;
+    bool           isGuessed       = false;
+    bool           isGuessedLetter = false;
 };
 
 

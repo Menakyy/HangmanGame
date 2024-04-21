@@ -32,8 +32,11 @@ void Game::playGame()
                 exitGame("Hangman is fully drawn!");
             }
 
-            _wordManager.printGuessedLetters();
-            guessWordByPlayer();
+            if (isGuessedLetter)
+            {
+                _wordManager.printGuessedLetters();
+                guessWordByPlayer();
+            }
             isGuessed = isWordGuessed();
             if (isGuessed)
             {
@@ -82,6 +85,8 @@ void Game::guessLetterByPlayer()
         std::cout << "Letter: " << letter << " is not in the word!" << std::endl;
         _hangmanDrawer.fail();
     }
+
+    isGuessedLetter = isCorrectLetter;
 }
 
 void Game::guessWordByPlayer()
