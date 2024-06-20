@@ -1,0 +1,8 @@
+version: '3.9' # Docker Compose version
+services:
+  hangman_game:
+    build: 
+      context: .                            # Build context
+      dockerfile: Dockerfile                # Dockerfile path
+    image: hangman_game:0.1                 # Image name and tag
+    container_name: hangman_game_container  # Container name
