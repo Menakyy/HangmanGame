@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 3.20)
 project("MyProjectTests")
-find_program(VALGRIND "valgrind")
+
+find_program(VALGRIND_EXECUTABLE valgrind)
+
+if(VALGRIND_EXECUTABLE)
+    message(STATUS "Valgrind found: ${VALGRIND_EXECUTABLE}")
+else()
+    message(SEND_ERROR "Valgrind not found. Please install Valgrind.")
+endif()
 
 set(SRC_FILES
     "../app/player/Player.cpp"
@@ -30,7 +37,7 @@ add_test(
     COMMAND "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${TEST_EXECUTABLE}"
     ${CPPUTEST_ARGS})
 
-if(ENABLE_VALGRIND AND VALGRIND)
+if(ENABLE_VALGRIND AND VALGRIND_EXECUTABLE)
     set(MEMORYCHECK_COMMAND_OPTIONS "--leak-check=full --show-leak-kinds=all")
     add_test(
         NAME "${PROJECT_NAME}Valgrind"
@@ -45,6 +52,4 @@ if(ENABLE_VALGRIND AND VALGRIND)
         "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${TEST_EXECUTABLE}"
         ${CPPUTEST_ARGS}
     )
-else()
-    message(SEND_ERROR "Valgrind not found. Please install Valgrind.")
 endif()

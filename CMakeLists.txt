@@ -13,11 +13,19 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 project("MyProject")
 
+include(CTest)
+
 option(CLANG_TIDY OFF "Enable clang-tidy checks.")
 option(ENABLE_VALGRIND ON "Enable Valgrind for tests.")
 
 if(ENABLE_VALGRIND)
-    add_compile_definitions(CPPUTEST_MEM_LEAK_DETECTION_DISABLED)
+    find_program(VALGRIND_EXECUTABLE valgrind)
+
+    if(NOT VALGRIND_EXECUTABLE)
+        message(FATAL_ERROR "Valgrind not found. Please install Valgrind.")
+    else()
+        add_compile_definitions(CPPUTEST_MEM_LEAK_DETECTION_DISABLED)
+    endif()
 endif()
 
 include_directories("lib/" "./")
@@ -35,7 +43,6 @@ add_executable(${PROJECT_NAME}
     "app/hangmanDrawer/HangMan.cpp")
 
 if(BUILD_TESTING)
-    include(CTest)
     add_subdirectory("lib/cpputest")
     add_subdirectory("tests")
 endif()
